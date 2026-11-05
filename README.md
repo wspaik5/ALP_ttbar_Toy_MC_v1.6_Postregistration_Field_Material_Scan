@@ -71,7 +71,14 @@ conversion rejection (φ_V) [19] are established ideas; the claim is limited to 
 - **Δχ² improves at low field, but the mass resolution pays for it.** Without mass window the 200 MeV loss falls from 130×
   to 52× at 0.2 T; with it, the 1/B momentum resolution offsets the gain and the optimum is near 1 T.
 - **Electron curvature is already bremsstrahlung-limited at 3.8 T** (18%), so the field matters less than expected for it.
-- Validation Y1–Y3 passed (Y1 uses the ½χ²₀ + ½χ²₁ boundary reference learned in v1.5). **Deviations:** an interim
+- **Wilks' theorem, revisited.** In v1.5 the preregistered χ²₁ null reference (Wilks' theorem) failed, because with a
+  free vertex the opening angle is identified only at second order and the null lies on a parameter boundary (see the
+  v1.5 section below). v1.6 used the boundary mixture ½χ²₀ + ½χ²₁ as the reference from the start, and validation Y1
+  passed at 0.2 T and 2.0 T (fraction at zero 0.45 / 0.51, median of the non-zero part 0.51 / 0.46), confirming at two
+  further fields that the mixture, not χ²₁, is the right null distribution for this test. The full v1.5 record (what was
+  preregistered, what was observed, why Wilks' theorem does not apply, Table and Figure 9) is reproduced unchanged in the
+  v1.5 section below and in Appendix A of the v1.6 PDF.
+- Validation Y1–Y3 passed. **Deviations:** an interim
   analysis of configs R, B02 and M05 was run while the other fits were still running (nothing changed afterwards);
   B and f are read from environment variables (defaults reproduce v1.5).
 
@@ -86,8 +93,17 @@ Planned next steps, each under a public preregistration and changing one ingredi
    symmetrically; background-dependent numbers reported separately).
 4. **μ⁺μ⁻ above 200 MeV and other long-lived-particle signatures**, e.g. ALPs from B-meson decays (B → K⁽*⁾a), already
    searched for by LHCb in dimuons [18], which would need a forward, VELO-like geometry.
-5. **Location-dependent material model** instead of one scale factor; boundary-aware reference distributions in future
-   preregistrations.
+5. **Location-dependent material model** instead of one scale factor.
+6. **Calibrated test statistics.** Before assuming χ²ₖ (Wilks [10]) for a new hypothesis test, check its regularity
+   conditions in the preregistration, and make the null reference a selectable part of the code:
+   - Wilks χ²ₖ when the conditions hold;
+   - boundary mixtures following Chernoff [11] (one boundary parameter, ½χ²₀ + ½χ²₁) and Self and Liang [12]
+     (several boundary or correlated parameters, weighted χ² mixtures);
+   - reparametrisation where a parameter enters only at higher order, as for the opening angle here [13];
+   - the empirical distribution of a dedicated null sample of pseudo-experiments.
+
+   Boundary-aware asymptotics of this kind are already standard in collider searches [20]; the change proposed here
+   concerns the procedure of this series, not the tools of the field.
 
 ## v1.5: preregistered two-hypothesis vertex fit
 
@@ -301,6 +317,7 @@ v1.2 https://doi.org/10.5281/zenodo.23847880 · v1.1 https://doi.org/10.5281/zen
 17. ALICE Collaboration, *Letter of intent for ALICE 3*, [arXiv:2211.02491](https://arxiv.org/abs/2211.02491).
 18. LHCb Collaboration, *Search for hidden-sector bosons in B⁰ → K*⁰μ⁺μ⁻ decays*, Phys. Rev. Lett. 115 (2015) 161802, [arXiv:1508.04094](https://arxiv.org/abs/1508.04094).
 19. ALICE Collaboration, *Dielectron production in proton-proton collisions at √s = 7 TeV*, [arXiv:1805.04391](https://arxiv.org/abs/1805.04391).
+20. G. Cowan, K. Cranmer, E. Gross, O. Vitells, *Asymptotic formulae for likelihood-based tests of new physics*, Eur. Phys. J. C 71 (2011) 1554, [arXiv:1007.1727](https://arxiv.org/abs/1007.1727).
 
 ## License
 
